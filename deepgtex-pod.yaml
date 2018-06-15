@@ -10,10 +10,3 @@ spec:
     resources:
       limits:
         nvidia.com/gpu: 1
-    volumeMounts:
-    - mountPath: /data
-      name: data
-  volumes:
-    - name: data
-      hostPath:
-        path: ~/bin/deep-gtex/data
