@@ -19,9 +19,7 @@ RUN pip3 install --upgrade tensorflow argparse halo scikit-learn numpy matplotli
 #clone deep-gtex
 RUN git clone https://github.com/ctargon/DeepGTEx 
 
-WORKDIR DeepGTEx/
+COPY run.sh /run.sh
 
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash"]
 
