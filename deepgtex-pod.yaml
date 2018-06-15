@@ -16,4 +16,4 @@ spec:
   volumes:
     - name: data
       hostPath:
-        path: /deep-gtex/data
+        path: ~/bin/deep-gtex/data
