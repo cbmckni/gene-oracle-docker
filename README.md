@@ -27,6 +27,8 @@ Tag the image with ```docker tag <IMG_ID> <HUB_USER>/<REPO>:<VERSION>```.
  
 Push with ```docker push <HUB_USER>/<REPO>```.
  - ex: ```docker push cbmckni/deep-gtex```
+
+[Source](https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html)
  
 ## Testing on Nautilus
 
@@ -50,7 +52,7 @@ spec:
 
 The number of GPUs and the image that will be pulled from DockerHub can be specified, among other things.
 
-After kubectl is installed and configured, you can create the deployment using ```kubectl create -f deepgtex-pod.yaml```.
+After kubectl is installed and configured, you can create the deployment using ```kubectl create -f deepgtex-pod.yaml```. [Source](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
 
 **Usage**
 
@@ -58,7 +60,7 @@ Check on your deployment using ```kubectl get pods```
 
 If the pod starts sucessfully, you can access the pod through ```kubectl exec -it <POD_NAME> -- /bin/bash```
 
-Data can be copied to and from your host machine with ```kubectl cp ....```
+Data can be copied to and from your host machine with ```kubectl cp ....``` [Source](https://medium.com/@nnilesh7756/copy-directories-and-files-to-and-from-kubernetes-container-pod-19612fa74660)
 
 If everything works, make sure all of the file paths in [run.sh](https://github.com/cbmckni/deep-gtex-docker/blob/master/run.sh) are correct, then execute the script.
 
