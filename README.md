@@ -52,13 +52,13 @@ spec:
 
 The number of GPUs and the image that will be pulled from DockerHub can be specified, among other things.
 
-After kubectl is installed and configured, you can create the deployment using ```kubectl create -f deepgtex-pod.yaml```. [Source](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
+After kubectl is installed and configured, you can create the deployment using ```kubectl create -f deepgtex-pod.yaml```. 
 
 **Usage**
 
 Check on your deployment using ```kubectl get pods```
 
-If the pod starts sucessfully, you can access the pod through ```kubectl exec -it <POD_NAME> -- /bin/bash```
+If the pod starts sucessfully, you can access the pod through ```kubectl exec -it <POD_NAME> -- /bin/bash``` [Source](https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/)
 
 Data can be copied to and from your host machine with ```kubectl cp ....``` [Source](https://medium.com/@nnilesh7756/copy-directories-and-files-to-and-from-kubernetes-container-pod-19612fa74660)
 
