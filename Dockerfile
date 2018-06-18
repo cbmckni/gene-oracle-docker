@@ -1,25 +1,19 @@
-FROM ubuntu
+FROM tensorflow/tensorflow:latest-gpu
 
-#configure non-interactive tzdata
-RUN apt-get update && apt-get install -y tzdata
-RUN echo "America/New_York" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+WORKDIR /
 
-#install software
-RUN apt-get install -y python3-pip python3-venv git python3-tk
-RUN pip3 install virtualenv
-
-#create env 
-RUN python3 -m venv gtex
-RUN . gtex/bin/activate
+RUN apt-get update
+RUN apt-get install -y python-pip python-tk git nano
 
 #Install packages
-RUN pip3 install --upgrade tensorflow argparse halo scikit-learn numpy matplotlib \
- msgpack scipy
+RUN pip install argparse halo scikit-learn numpy matplotlib msgpack scipy
+RUN pip install update
 
 #clone deep-gtex
 RUN git clone https://github.com/ctargon/DeepGTEx 
 
-COPY run.sh /run.sh
+WORKDIR DeepGTEx/
 
-ENTRYPOINT ["/bin/bash"]
+COPY run.sh ./run.sh
 
+RUN /bin/bash
