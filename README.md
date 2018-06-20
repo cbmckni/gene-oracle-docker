@@ -52,6 +52,9 @@ spec:
 
 The number of GPUs and the image that will be pulled from DockerHub can be specified, among other things.
 
+To run the pod on a specific node/gpu(ex. a FIONA gpu), add the ```nodeSelector``` attribute to the yaml file.
+ - Examples of this can be found [here](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
+
 After kubectl is installed and configured, you can create the deployment using ```kubectl create -f deepgtex-pod.yaml```. 
 
 **Usage**
