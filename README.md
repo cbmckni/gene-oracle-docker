@@ -2,7 +2,7 @@
 
 ***Currently a funtional work-in-progress
 
-This is a dockerized version of [DeepGTEx](https://github.com/ctargon/DeepGTEx), a TensorFlow deep learning algorithm. 
+This is a dockerized version of [gene-oracle](https://github.com/ctargon/gene-oracle), a deep learning algorithm built using Tensorflow. 
 
 ## Building and pushing image
 
