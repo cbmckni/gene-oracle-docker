@@ -1,5 +1,5 @@
 FROM tensorflow/tensorflow:latest-gpu
-MAINTAINER Cole McKnight <cbmckni@clemson.edu>
+MAINTAINER Cole McKnight <cbmckni@clemson.edu> Colin Targonski <ctargon@clemson.edu>
 
 WORKDIR /
 
@@ -12,9 +12,9 @@ RUN pip install argparse halo scikit-learn numpy matplotlib msgpack scipy
 RUN pip install update
 
 #Clone deep-gtex
-RUN git clone https://github.com/ctargon/DeepGTEx 
+RUN git clone https://github.com/ctargon/gene-oracle 
 
-WORKDIR DeepGTEx/
+WORKDIR gene-oracle/
 
 COPY run.sh ./run.sh
 
