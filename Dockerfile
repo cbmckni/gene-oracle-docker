@@ -16,6 +16,8 @@ RUN git clone https://github.com/ctargon/gene-oracle
 
 WORKDIR gene-oracle/
 
+#Copy entrypoint script 
 COPY run.sh ./run.sh
+RUN chmod +x run.sh
 
-RUN /bin/bash
+ENTRYPOINT ["run.sh"]

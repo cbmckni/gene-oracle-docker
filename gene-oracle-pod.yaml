@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: gene-oracle-container
-    image: docker.io/ctargon/gene-oracle
+    image: docker.io/cbmckni/gene-oracle
     imagePullPolicy: Always
     resources:
       limits:
