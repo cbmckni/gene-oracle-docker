@@ -6,4 +6,4 @@ echo "Copying data..."
 kubectl cp /home/eceftl2/workspace/SciDAS/gene-oracle/data/ deepgtex-prp/gene-oracle:/
 
 echo "Copying subset data..."
-kubectl cp /home/eceftl2/workspace/SciDAS/gene-oracle/data/ deepgtex-prp/gene-oracle:/
+kubectl cp /home/eceftl2/workspace/SciDAS/gene-oracle/data/ deepgtex-prp/gene-oracle:/gene-oracle
