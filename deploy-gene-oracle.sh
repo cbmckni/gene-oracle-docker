@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "Instantiating pod..."
-kubctl create -f gene-oracle-pod.yaml
+kubectl create -f gene-oracle-pod.yaml
 
 sleep 5
 kubectl get pods
