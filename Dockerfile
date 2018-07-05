@@ -3,6 +3,9 @@ MAINTAINER Cole McKnight <cbmckni@clemson.edu> Colin Targonski <ctargon@clemson.
 
 WORKDIR /
 
+#Make input data directories
+RUN mkdir data subsets
+
 #Install initial software
 RUN apt-get update
 RUN apt-get install -y python-pip python-tk git nano vim
