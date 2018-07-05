@@ -4,7 +4,19 @@ metadata:
   name: gene-oracle
 spec:
   containers:
-  - name: gene-oracle-container
+  - name: gene-oracle-container-1
+    image: docker.io/cbmckni/gene-oracle
+    imagePullPolicy: Always
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+  - name: gene-oracle-container-2
+    image: docker.io/cbmckni/gene-oracle
+    imagePullPolicy: Always
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+  - name: gene-oracle-container-3
     image: docker.io/cbmckni/gene-oracle
     imagePullPolicy: Always
     resources:
