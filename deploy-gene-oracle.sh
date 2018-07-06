@@ -41,7 +41,9 @@ sleep 2
 status="$(kubectl get pod gene-oracle | awk '{ print $3 }' | tail -n +2)"
 done
 
+kubectl get pod gene-oracle
 echo "IF YOU DO NOT SEE YOUR POD NAME, KILL THIS SCRIPT"
+sleep 2
 
 #Add containers to end of file
 for i in $(seq 1 $1); do
