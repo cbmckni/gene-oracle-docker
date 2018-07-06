@@ -10,7 +10,6 @@
 dataDir="$2"
 
 # check whether directories exist
-test -d "${subsetDir}" || exit 1
 test -d "${dataDir}" || exit 1
 
 last=0
@@ -19,10 +18,10 @@ current=1
 #Wait for input data to finish downloading
 while [ "$last" != "$current" ]; do
    last=$current
-   current=$(find "${subsetDir}" -exec stat -c "%Y" \{\} \; | sort -n | tail -1)
+   current=$(find "${dataDir}" -exec stat -c "%Y" \{\} \; | sort -n | tail -1)
    sleep 10
 done
-echo "subset directory is now stable..."
+echo "data directory is now stable..."
 
 
 # run gene oracle
