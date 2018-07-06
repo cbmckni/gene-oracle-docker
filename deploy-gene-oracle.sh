@@ -4,7 +4,7 @@
 
 #Command line arguments
 # $1 - number of containers
-# $2 - input data dir - input data files must be named "data-<experiment_number>"
+# $2 - input data dir - input data folders must be named "data-<experiment_number>". See README for more info.
 
 #Generate beginning of pod file
 cat > ./gene-oracle-pod.yaml <<EOF
@@ -41,7 +41,9 @@ echo "IF YOU DO NOT SEE YOUR POD NAME, KILL THIS SCRIPT"
 #Add containers to end of file
 for i in $(seq 1 $1); do
     echo "Copying data...$i"
-    kubectl cp $2/data-$i deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i
+    kubectl cp $2/data-$i deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i &
+    echo "Starting gene-oracle...$i"
+    kubectl exec gene-oracle -c gene-oracle-container-$i -- ./run-gene-oracle set-$i data-$i &
 done
 
 
