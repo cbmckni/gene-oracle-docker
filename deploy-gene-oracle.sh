@@ -33,8 +33,13 @@ sleep 5
 echo "Instantiating pod..."
 kubectl create -f gene-oracle-pod.yaml
 
-sleep 15
-kubectl get pods
+status="$(kubectl get pod gene-oracle | awk '{ print $2 }' | tail -n +2)"
+while [ "$status" != "Running" ]
+do
+echo "Waiting for pod to start...$status"
+sleep 2
+status="$(kubectl get pod gene-oracle | awk '{ print $3 }' | tail -n +2)"
+done
 
 echo "IF YOU DO NOT SEE YOUR POD NAME, KILL THIS SCRIPT"
 
