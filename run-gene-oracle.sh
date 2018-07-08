@@ -16,10 +16,12 @@ last=0
 current=1
 
 #Wait for input data to finish downloading
+echo "Checking if data is stable..."
 while [ "$last" != "$current" ]; do
    last=$current
    current=$(find "${dataDir}" -exec stat -c "%Y" \{\} \; | sort -n | tail -1)
-   sleep 10
+   echo "Waiting for data download to finish...
+   sleep 4
 done
 echo "data directory is now stable..."
 
@@ -40,7 +42,7 @@ echo "data directory is now stable..."
 python scripts/classify.py \
  --dataset ./$2/gtex_gct_data_float_v7.npy \
  --gene_list ./$2/gtex_gene_list_v7.npy \
- --sample_json ./$2/gtex_tissue_count_v7.json \  
+ --sample_json ./$2/gtex_tissue_count_v7.json \
  --subset_list ./$2/hallmark_experiments.txt \
  --config ./models/net_config.json \
  --out_file ./$2/hallmark_classify_kfold10.log

@@ -49,8 +49,9 @@ sleep 2
 for i in $(seq 1 $1); do
     echo "Copying data...$i"
     kubectl cp $2/data-$i deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i &
-#    echo "Starting gene-oracle...$i"
-#    kubectl exec gene-oracle -c gene-oracle-container-$i -- ./run-gene-oracle set-$i data-$i &
+    #echo "Starting gene-oracle...$i"
+    #kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh set-$i data-$i" &
+    sleep 1
 done
 
 
