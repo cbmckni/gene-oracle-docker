@@ -16,7 +16,7 @@ spec:
   containers:
 EOF
 
-#Add containers to end of file
+#Add framework of n containers to end of file
 for i in $(seq 1 $1); do
     echo "  - name: gene-oracle-container-$i" >> ./gene-oracle-pod.yaml
     echo "    image: docker.io/cbmckni/gene-oracle" >> ./gene-oracle-pod.yaml
@@ -26,13 +26,16 @@ for i in $(seq 1 $1); do
     echo "        nvidia.com/gpu: 1" >> ./gene-oracle-pod.yaml
 done
 
+#User confirms generated framework is correct
 echo "Generated pod framework:"
 cat ./gene-oracle-pod.yaml
 sleep 5
 
+#Start pod
 echo "Instantiating pod..."
 kubectl create -f gene-oracle-pod.yaml
 
+#Wait for pod to start
 status="$(kubectl get pod gene-oracle | awk '{ print $2 }' | tail -n +2)"
 while [ "$status" != "Running" ]
 do
@@ -41,16 +44,18 @@ sleep 2
 status="$(kubectl get pod gene-oracle | awk '{ print $3 }' | tail -n +2)"
 done
 
+#User confirms pod is running correctly
 kubectl get pod gene-oracle
 echo "IF YOU DO NOT SEE YOUR POD NAME, KILL THIS SCRIPT"
 sleep 2
 
-#Add containers to end of file
+#Copy data and start gene-oracle in each container
 for i in $(seq 1 $1); do
     echo "Copying data...$i"
     kubectl cp $2/data-$i deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i &
-    #echo "Starting gene-oracle...$i"
-    #kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh set-$i data-$i" &
+    sleep 5
+    echo "Starting gene-oracle...$i"
+    kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh set-$i /gene-oracle/data-$i" &
     sleep 1
 done
 
