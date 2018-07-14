@@ -20,7 +20,7 @@ echo "Checking if data is stable..."
 while [ "$last" != "$current" ]; do
    last=$current
    current=$(find "${dataDir}" -exec stat -c "%Y" \{\} \; | sort -n | tail -1)
-   echo "Waiting for data download to finish...
+   echo "Waiting for data download to finish..."
    sleep 4
 done
 echo "data directory is now stable..."
