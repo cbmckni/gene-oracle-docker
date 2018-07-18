@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#Purpose: Will wait for data directories to stabilize, then run gene-oracle
+#Purpose: Will wait for input data directory to stabilize, then run gene-oracle
 #Run from outside script using kubectl exec ....
 
 #Command line args:
@@ -25,6 +25,9 @@ while [ "$last" != "$current" ]; do
 done
 echo "data directory is now stable..."
 
+######
+#TODO: Customize gene-oracle command for the experiment
+######
 
 # run gene oracle
 #python scripts/gene-oracle.py  \

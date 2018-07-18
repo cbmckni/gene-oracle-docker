@@ -6,6 +6,11 @@
 # $1 - number of containers
 # $2 - input data dir - input data folders must be named "data-<experiment_number>". See README for more info.
 
+
+######
+#TODO: Add "nodeSelector" attribute to run gene-oracle on specific nodes
+######
+
 #Generate beginning of pod file
 cat > ./gene-oracle-pod.yaml <<EOF
 apiVersion: v1
@@ -55,7 +60,7 @@ for i in $(seq 1 $1); do
     kubectl cp $2/data deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i &
     sleep 5
     echo "Starting gene-oracle...$i"
-    kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh set-$i /gene-oracle/data-$i" &
+    kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh set-$i /gene-oracle/data" &
     sleep 1
 done
 

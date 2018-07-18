@@ -7,7 +7,7 @@
 
 mkdir -p ../logs
 
-#Copy data and start gene-oracle in each container
+#Copy logs from each container to local machine
 for i in $(seq 1 $1); do
     echo "Getting log...$i"
     kubectl cp deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i ../logs &
