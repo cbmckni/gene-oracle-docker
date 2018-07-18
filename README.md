@@ -58,7 +58,7 @@ spec:
 
 This can be run on any kubernertes cluster, but these instructions are specifically for the [Nautilus](https://nautilus.optiputer.net/) system.
 
-##Configuration
+## Configuration
 
 After installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local machine, it must be configured to the Nautilus system. 
 
@@ -80,7 +80,7 @@ The number of GPUs and the image that will be pulled from DockerHub can be speci
 After kubectl is installed and configured, you can run *deploy-gene-oracle.sh* to deploy your pod.
 
 
-##Deployment
+## Deployment
 
 **Pre-deployment**
 
@@ -101,7 +101,7 @@ Once gene-oracle has finished, you can copy the log files back to your machine w
 *Ex.* ```./get-logs.sh 3``` to pull logs from a 3-container pod.
 
 
-##Deletion
+## Deletion
 
 Delete the deployment using ```kubectl delete pod gene-oracle``` 
 
