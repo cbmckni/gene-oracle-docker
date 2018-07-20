@@ -84,7 +84,20 @@ After kubectl is installed and configured, you can run *deploy-gene-oracle.sh* t
 
 **Pre-deployment**
 
-The user will create a folder of input data, which is located in the parent directory of the gene-oracle-docker repo. So ```$(pwd)/..``` must point to the folder where the input folder is located. Name each folder "data".
+The user will create a folder of input data, which is located in the parent directory of the gene-oracle-docker repo. So ```$(pwd)/..``` must point to the folder where the input folder is located. Name the folder "data".
+
+The user must place a simple shell script named "command.sh" inside the folder. This script will only be the gene-oracle command to be run. Ex:
+```
+#!/bin/sh
+
+python scripts/classify.py \
+ --dataset ./data/gtex_gct_data_float_v7.npy \
+ --gene_list ./data/gtex_gene_list_v7.npy \
+ --sample_json ./data/gtex_tissue_count_v7.json \
+ --subset_list ./data/oncogenetic_sets.txt \
+ --config ./models/net_config.json \
+ --out_file ./data/oncogenetic_classify_kfold10.log
+```
 
 **Usage**
 

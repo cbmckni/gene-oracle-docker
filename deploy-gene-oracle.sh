@@ -24,7 +24,7 @@ EOF
 #Add framework of n containers to end of file
 for i in $(seq 1 $1); do
     echo "  - name: gene-oracle-container-$i" >> ./gene-oracle-pod.yaml
-    echo "    image: docker.io/ctargon/gene-oracle" >> ./gene-oracle-pod.yaml
+    echo "    image: docker.io/cbmckni/gene-oracle" >> ./gene-oracle-pod.yaml
     echo "    imagePullPolicy: Always" >> ./gene-oracle-pod.yaml
     echo "    resources:" >> ./gene-oracle-pod.yaml
     echo "      limits:" >> ./gene-oracle-pod.yaml
@@ -60,7 +60,7 @@ for i in $(seq 1 $1); do
     kubectl cp $2/data deepgtex-prp/gene-oracle:/gene-oracle -c gene-oracle-container-$i &
     sleep 5
     echo "Starting gene-oracle...$i"
-    kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh set-$i /gene-oracle/data" &
+    kubectl exec gene-oracle -c gene-oracle-container-$i -- /bin/bash -c "/gene-oracle/run-gene-oracle.sh" &
     sleep 1
 done
 
