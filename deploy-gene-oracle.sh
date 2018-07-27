@@ -24,7 +24,7 @@ EOF
 #Add framework of n containers to end of file
 for i in $(seq 1 $1); do
     echo "  - name: gene-oracle-container-$i" >> ./gene-oracle-pod.yaml
-    echo "    image: docker.io/cbmckni/gene-oracle" >> ./gene-oracle-pod.yaml
+    echo "    image: docker.io/ctargon/gene-oracle" >> ./gene-oracle-pod.yaml
     echo "    imagePullPolicy: Always" >> ./gene-oracle-pod.yaml
     echo "    resources:" >> ./gene-oracle-pod.yaml
     echo "      limits:" >> ./gene-oracle-pod.yaml

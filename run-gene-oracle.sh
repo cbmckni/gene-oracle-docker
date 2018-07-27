@@ -43,9 +43,9 @@ echo "data directory is now stable..."
 
 # run gene oracle based on a specific subset - JUST FOR TESTING
 python scripts/classify.py \
- --dataset ./$2/gtex_gct_data_float_v7.npy \
- --gene_list ./$2/gtex_gene_list_v7.npy \
- --sample_json ./$2/gtex_tissue_count_v7.json \
- --subset_list ./$2/hallmark_experiments.txt \
+ --dataset ./data/gtex_gct_data_float_v7.npy \
+ --gene_list ./data/gtex_gene_list_v7.npy \
+ --sample_json ./data/gtex_tissue_count_v7.json \
+ --subset_list ./data/oncogenetic_sets.txt \
  --config ./models/net_config.json \
- --out_file ./$2/hallmark_classify_kfold10.log
+ --out_file ./data/oncogenetic_classify_kfold10.log
