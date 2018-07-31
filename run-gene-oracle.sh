@@ -27,7 +27,11 @@ echo "data directory is now stable..."
 
 #run gene-oracle script
 echo "Running gene-oracle..."
-source ${dataDir}/command.sh
+mkdir /gene-oracle/gene-oracle/data
+mv ${dataDir}/command.sh /gene-oracle/gene-oracle
+mv /gene-oracle/data/* /gene-oracle/gene-oracle/data/
+cd gene-oracle
+sh ./command.sh
 
 
 

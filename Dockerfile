@@ -17,7 +17,7 @@ RUN pip install update
 WORKDIR gene-oracle/
 
 #Copy entrypoint script 
-COPY run-gene-oracle.sh ./run-gene-oracle.sh
+COPY run-gene-oracle.sh ./run-gene-oracle.sh 
 RUN chmod +x run-gene-oracle.sh
 
 RUN /bin/bash
