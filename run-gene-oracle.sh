@@ -26,10 +26,8 @@ done
 echo "data directory is now stable..."
 
 #run gene-oracle script
-echo "Running gene-oracle..."
-mkdir /gene-oracle/gene-oracle/data
+echo "Running gene-oracle..." 
 mv ${dataDir}/command.sh /gene-oracle/gene-oracle
-mv /gene-oracle/data/* /gene-oracle/gene-oracle/data/
 cd gene-oracle
 sh ./command.sh
 
